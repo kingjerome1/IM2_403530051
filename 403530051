@@ -2,44 +2,64 @@ package rectangle;
 
 import java.util.Scanner;
 
-public class Rectangle {
+public class RectangleTester {
     
     public static void main(String[] args) {
+        int x, y, w, h, n;
+        
         try{
         Scanner input = new Scanner(System.in);
-        double x1, y1, w1, h1 ;
-        double x2, y2, w2, h2 ;
-        System.out.print("請輸入第一組長方形的 x座標 , y座標 , Width , Height(以空白分開): ");
-        x1 = input.nextDouble();
-        y1 = input.nextDouble();
-        w1 = input.nextDouble();
-        h1 = input.nextDouble();                
-        System.out.print("請輸入第二組長方形的 x座標 , y座標 , Width , Height(以空白分開): ");
-        x2 = input.nextDouble();
-        y2 = input.nextDouble();
-        w2 = input.nextDouble();
-        h2 = input.nextDouble();
-        System.out.println("\t\t"+"x座標"+"\t"+"y座標"+"\t"+"Area"+"\t"+"Perimeter");
-        System.out.println("Rectangle1:" +"\t"+  x1 +"\t" +y1 + "\t" + w1*h1 + "\t" + (h1+w1)*2);
-        System.out.println("Rectangle2:" +"\t"+  x2 +"\t" +y2 + "\t" + w2*h2 + "\t" + (h2+w2)*2);
-    }catch(Exception e){
-        System.out.println("請您照著格式輸入拜託><!!");
-        System.exit(0);
-    }
-    }
-    class rectangle{
-        private double Width =0.0, Height =0.0, area, perimeter;        
-        public rectangle(double x, double y, double w, double h){           
-            Width =  w;
-            Height = h;
+        
+        
+        System.out.print("請輸入你要建立的長方形個數: ");
+        n = input.nextInt();
+        Rectangle[] arrayRect = new Rectangle[n];
+        
+        for(int i=0;i<n;i++){
+        int j = i;
+        System.out.printf("請輸入第%d長方形的 x座標 , y座標 , Width , Height(以空白分開): ",++j);
+        x = input.nextInt();
+        y = input.nextInt();
+        w = input.nextInt();
+        h = input.nextInt();
+        
+        arrayRect[i] = new Rectangle(x, y, w, h);
+        }               
+        
+        for(int i = 0;i < n; i++){
+            int j = i;
+            System.out.printf("第%d個長方形"+arrayRect[i]+"\n",++j);
+            }
+        System.out.println("\n"+"End of Output!");
+        }                
+        catch(Exception e){
+            System.out.println("請您照著格式輸入拜託><!!");
+            }
         }
-        public double computeArea(){
-            area = Width * Height;
-            return area;
+    }
+
+    class Rectangle{
+        public int width =0, height =0, x, y;
+        public int area, perimeter;  
+        public Rectangle(int x, int y, int width, int height){           
+            this.width = width;
+            this.height = height;
+            this.x = x;
+            this.y = y;
         }
-        public double computePerimeter(){
-            perimeter = (Width+Height)*2;
-            return perimeter;
+        public int getWidth(){
+            return width;
+        }
+        public int getHeight(){
+            return height;
         }       
+        
+        public String toString(){
+            area =  getWidth()*getHeight();
+            perimeter = (getWidth()+getHeight())*2;
+            String msg1 = String.format("Rectangle[x=%d, y=%d, width=%d, height=%d]", x, y, width, height);
+            String msg2 = String.format("\nArea=%d \nPerimeter=%d", area, perimeter);
+            return msg1+msg2;            
+        }
     }
-}
+
