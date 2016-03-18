@@ -1,4 +1,4 @@
-public class NewClass {
+public class Easter {
     
     public static String calculateEaster(int aYear){
         
