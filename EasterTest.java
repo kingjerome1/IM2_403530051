@@ -30,11 +30,11 @@ abstract class Easter implements Easter1
         return input.nextInt();
     }
 
-    public static String getEasterSundayDate(int year)
+    public static String calculateEaster(int aYear)
     {
-        int a = year % 19,
-            b = year / 100,
-            c = year % 100,
+        int a = aYear % 19,
+            b = aYear / 100,
+            c = aYear % 100,
             d = b / 4,
             e = b % 4,
             g = (8 * b + 13) / 25,
