@@ -1,5 +1,10 @@
 import java.util.Scanner;
 
+interface  Easter1{
+    void calculateEaster(int aYear);
+    void getResult(Scanner input);    
+    }
+
 class EasterTest
 {
     public static void main(String[] args)
