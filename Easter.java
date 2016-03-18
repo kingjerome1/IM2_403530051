@@ -33,6 +33,6 @@ public class Easter {
     @Override
     public String toString() {
         gauss_algorithm();
-        return "In " + String.format("%d", this.aYear) + ", Easter Sunday is: month = "+ String.format("%d", this.aMonth) + "and day = " + String.format("%d",this.aDay);
+        return "In " + String.format("%d", this.aYear) + ", Easter Sunday is: month = "+ String.format("%d", this.aMonth) + " and day = " + String.format("%d",this.aDay);
     }
 }
