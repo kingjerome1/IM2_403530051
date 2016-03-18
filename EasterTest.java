@@ -1,11 +1,11 @@
 import java.util.Scanner;
 
 interface  Easter1{
-    void calculateEaster(int aYear);
-    void getResult(Scanner input);    
+    public String calculateEaster();
+    public int getResult(); 
     }
 
-class EasterTest
+abstract class Easter implements Easter1
 {
     public static void main(String[] args)
     {
@@ -20,7 +20,7 @@ class EasterTest
         System.out.println(getEasterSundayDate(num));
     }
 
-    private static int getResult(Scanner input)
+    public static int getResult(Scanner input)
     {
         while(!input.hasNextInt())
         {
