@@ -5,19 +5,25 @@ interface  Easter1{
     public int getResult(); 
     }
 
-abstract class Easter implements Easter1
+public class Easter 
 {
     public static void main(String[] args)
     {
         System.out.print("請您輸入想要計算復活節的西元年份: ");
         Scanner input = new Scanner(System.in);
-        int num = getResult(input);
+        int num = getResult(input);       
         while(num <= 0)
         {
             System.out.print("請勿輸入負數唷=ˇ=");
             num = getResult(input);
         }
-        System.out.println(getEasterSundayDate(num));
+        System.out.println(calculateEaster(num));
+        
+        Easter easter_2001 = new Easter(2001,0,0);
+		Easter easter_2012 = new Easter(2012,0,0);
+		
+		System.out.println(easter_2001.toString());
+		System.out.println(easter_2012.toString());
     }
 
     public static int getResult(Scanner input)
@@ -91,4 +97,5 @@ abstract class Easter implements Easter1
 
         return result + p;
     }
+
 }
