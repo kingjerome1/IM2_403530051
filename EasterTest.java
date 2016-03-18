@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-class Easter
+class EasterTest
 {
     public static void main(String[] args)
     {
