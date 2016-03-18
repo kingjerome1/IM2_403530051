@@ -14,7 +14,7 @@ public class Easter {
         public void gauss_algorithm(){
         
 
-    int a = this.aYear % 19,
+    	    int a = this.aYear % 19,
 		b = this.aYear / 100,
 		c = this.aYear % 100,
 		d = b / 4,
@@ -26,7 +26,7 @@ public class Easter {
 		k = c % 4,
 		l = (32+ 2*e + 2*i - h - k) % 7,
 		m = (a + 11*h + 22*l) / 451;
-        this.aMonth = ((h + l - 7*m + 114) / 31);
+                this.aMonth = ((h + l - 7*m + 114) / 31);
 		this.aDay = ((h + l - 7*m + 114) % 31)+1;
               
     }     
