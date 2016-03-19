@@ -1,21 +1,32 @@
 import java.util.Scanner;
 
-class Easter
+interface  Easter1{
+    public String calculateEaster();
+    public int getResult(); 
+    }
+
+public class Easter 
 {
     public static void main(String[] args)
     {
         System.out.print("請您輸入想要計算復活節的西元年份: ");
         Scanner input = new Scanner(System.in);
-        int num = getResult(input);
+        int num = getResult(input);       
         while(num <= 0)
         {
             System.out.print("請勿輸入負數唷=ˇ=");
             num = getResult(input);
         }
-        System.out.println(getEasterSundayDate(num));
+        System.out.println(calculateEaster(num));
+        
+        	Easter easter_2001 = new Easter(2001,0,0);
+		Easter easter_2012 = new Easter(2012,0,0);
+		
+		System.out.println(easter_2001.toString());
+		System.out.println(easter_2012.toString());
     }
 
-    private static int getResult(Scanner input)
+    public static int getResult(Scanner input)
     {
         while(!input.hasNextInt())
         {
@@ -25,11 +36,11 @@ class Easter
         return input.nextInt();
     }
 
-    public static String getEasterSundayDate(int year)
+    public static String calculateEaster(int aYear)
     {
-        int a = year % 19,
-            b = year / 100,
-            c = year % 100,
+        int a = aYear % 19,
+            b = aYear / 100,
+            c = aYear % 100,
             d = b / 4,
             e = b % 4,
             g = (8 * b + 13) / 25,
@@ -86,4 +97,5 @@ class Easter
 
         return result + p;
     }
+
 }
