@@ -1,0 +1,62 @@
+public class MainClass {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+        Book book1 = new Book("Java SE 7.0");
+        book1.info();
+        System.out.println("--------------------------");
+        Book book2 = new Book("Android 6.0",650);//62
+        book2.info();//69
+        
+    }
+    
+}
+
+//-------------------------------------------------------------
+class SuperBook{
+    private String name;
+    
+    public SuperBook(String name){//34
+        System.out.println("這是 SuperBook 有參數建構子...");//35
+        this.name = name;//48
+    }
+    
+    public void info(){//39
+        System.out.printf("SuperBook info() name:%s%n",name);//71
+    }
+}
+
+class Book extends SuperBook{
+    private int price;
+    
+    public Book(String name){//47
+        super(name);//33
+        System.out.println("程式1...");//49
+        System.out.println("程式2...");//50
+        System.out.println("程式3...");//51
+        System.out.println("程式4...");//52
+        System.out.println("程式5...");//53
+        System.out.println("程式6...");//54
+        System.out.println("程式7...");//55
+        System.out.println("程式8...");//56
+        System.out.println("程式9...");//57
+        System.out.println("程式10...");//58        
+        System.out.println("這是 Book 有一個參數的建構子...");//64
+        
+    }
+    
+    public Book(String name , int price){//63
+        this(name);//46
+        System.out.println("這是 Book 有二個參數的建構子...");//65
+        this.price = price; //23       
+    }
+    
+    @Override
+    public void info(){//70
+        super.info();//38
+        System.out.printf("Book info() price:%d%n",price);//24
+    }
+}
