@@ -1,0 +1,80 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.sample;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.sql.SQLException;
+
+/**
+ *
+ * @author student
+ */
+public class MainClass {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+        try(FileInputStream fis = new FileInputStream("test.txt");
+                DoTest dt = new DoTest()) { //7.0新增功能 在try後面直接( )就不用寫finally
+            dt.doTest();
+        } catch (SQLException | IOException ex) { //7.0新增功能 catch後面可以捕捉多個ex
+            System.out.println("1. "+ex.getClass().getName()+" --> "+ex.getMessage());
+            //ex = new Exception(); //多重抓取不能指派 錯誤 ex 為final
+        } catch (Exception ex){
+            System.out.println("2. "+ex.getClass().getName()+" --> "+ex.getMessage());
+            ex = new Exception(); //單一抓取可以指派
+        } 
+        System.out.println("其他程式...");
+    }
+
+    private static void doTest() throws Exception {
+        double random = Math.random();
+        try{
+            if (random < 0.35) {
+                throw new SQLException("無法開啟資料庫!"); //可以自動判定Exception  這裡如果是SQLException 上面就是Exception
+            } else if (random < 0.7) {
+                throw new IOException("無法開啟檔案!");
+            } else {
+                System.out.println("系統運作正常...");
+            }
+        }catch(Exception ex){
+            System.out.println("先處理部分程式...");
+            System.out.println("0. "+ex.getClass().getName()+" --> "+ex.getMessage());
+            throw ex;
+        }
+        
+    }
+}
+
+//-----------------------------------
+class DoTest implements AutoCloseable{
+    
+    public void doTest() throws Exception  {
+        double random = Math.random();
+        try{
+            if (random < 0.35) {
+                throw new SQLException("無法開啟資料庫!");
+            } else if (random < 0.7) {
+                throw new IOException("無法開啟檔案!");
+            } else {
+                System.out.println("系統運作正常...");
+            }
+        }catch(Exception ex){
+            System.out.println("先處理部分程式...");
+            System.out.println("0. "+ex.getClass().getName()+" --> "+ex.getMessage());
+            throw ex;
+        }        
+    }
+
+    @Override
+    public void close() throws Exception {
+        System.out.println("資源關閉!"); //不用寫finally這行都會執行
+    }
+}
